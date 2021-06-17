@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<title>Cookie Clicker Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>body {font-family:sans-serif;}</style>
+</head>
+<body>
+	<h1>Kitten Upgrade Multiplier Calculator</h1><hr>
+	<div style="margin-top:20px;margin-left:20px">
+	Kitten type:<br>
+	<input type="checkbox" id="k1">Helpers<br>
+	<input type="checkbox" id="k2">Workers<br>
+	<input type="checkbox" id="k3">Engineers<br>
+	<input type="checkbox" id="k4">Overseers<br>
+	<input type="checkbox" id="k5">Managers<br>
+	<input type="checkbox" id="k6">Accountants<br>
+	<input type="checkbox" id="k7">Specialists<br>
+	<input type="checkbox" id="k8">Experts<br>
+	<input type="checkbox" id="k9">Consultants<br>
+	<input type="checkbox" id="k10">Assistants to the regional manager<br>
+	<input type="checkbox" id="k11">Marketeers<br>
+	<input type="checkbox" id="k12">Analysts<br>
+	<input type="checkbox" id="k13">Executives<br>
+	<input type="checkbox" id="k14">Angels<br>
+	<br>
+	Number of (non-shadow) achievements:<br>
+	<input id="cheevos"><br>
+	<br>
+	<button onclick='main()'>Calculate</button><br>
+	<br>
+	<span id="milkMultiplier"></span><br>
+	</div>
+	<script>
+	function main() {
+		var milk = Number(document.querySelector("#cheevos").value) * 4 / 100;
+		var milkMultiplierTotal = 1;
+		if (document.querySelector("#k1").checked) { 
+			milkMultiplierTotal *= milk * 0.1 + 1
+		}
+		if (document.querySelector("#k2").checked) { 
+			milkMultiplierTotal *= milk * 0.125 + 1
+		}
+		if (document.querySelector("#k3").checked) { 
+			milkMultiplierTotal *= milk * 0.15 + 1
+		}
+		if (document.querySelector("#k4").checked) { 
+			milkMultiplierTotal *= milk * 0.175 + 1
+		}
+		if (document.querySelector("#k5").checked) { 
+			milkMultiplierTotal *= milk * 0.2 + 1
+		}
+		if (document.querySelector("#k6").checked) { 
+			milkMultiplierTotal *= milk * 0.2 + 1
+		}
+		if (document.querySelector("#k7").checked) { 
+			milkMultiplierTotal *= milk * 0.2 + 1
+		}
+		if (document.querySelector("#k8").checked) { 
+			milkMultiplierTotal *= milk * 0.2 + 1
+		}
+		if (document.querySelector("#k9").checked) { 
+			milkMultiplierTotal *= milk * 0.2 + 1
+		}
+		if (document.querySelector("#k10").checked) { 
+			milkMultiplierTotal *= milk * 0.175 + 1
+		}
+		if (document.querySelector("#k11").checked) { 
+			milkMultiplierTotal *= milk * 0.15 + 1
+		}
+		if (document.querySelector("#k12").checked) { 
+			milkMultiplierTotal *= milk * 0.125 + 1
+		}
+		if (document.querySelector("#k13").checked) { 
+			milkMultiplierTotal *= milk * 0.115 + 1
+		}
+		if (document.querySelector("#k14").checked) { 
+			milkMultiplierTotal *= milk * 0.1 + 1
+		}
+		document.querySelector("#milkMultiplier").innerHTML = "Kitten upgrades' CpS Multiplier is <b>+" + eval((milkMultiplierTotal - 1) * 100) + "% </b>";
+	}
+	</script>
+</body>
+</html>
