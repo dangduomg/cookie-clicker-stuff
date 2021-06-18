@@ -30,8 +30,9 @@
 			function calculateCookiesNeeded() {
 				const currentPL = parseFloat(currentPrestigeInput.value),
 					nextHC = parseFloat(chipsNeededInput.value),
-					cookiesNeeded = ((currentPL + nextHC) ** 3 - currentPL ** 3) * 1e12
-				cookiesNeededOutput.innerHTML = `You need <b> ${cookiesNeeded.toExponential()} cookies </b> for the next ascension`
+					cookiesNeeded = new Intl.NumberFormat(undefined, { notation:"compact" })
+						.format(((currentPL + nextHC) ** 3 - currentPL ** 3) * 1e12)
+				cookiesNeededOutput.innerHTML = `You need <b> ${cookiesNeeded} cookies </b> for the next ascension`
 			}
 
 			calculateButton.addEventListener("click", calculateCookiesNeeded)
