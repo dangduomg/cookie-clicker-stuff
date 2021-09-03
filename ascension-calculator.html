@@ -14,10 +14,10 @@
 		<hr />
 		<div style="margin-top: 10px; margin-left: 20px">
 			Your current prestige level:<br />
-			<input id="prestige" /><br />
+			<input id="prestige" type="number" value="0" min="0" /><br />
 			<br />
 			Number of heavenly chips for next ascension:<br />
-			<input id="chipsNeeded" /><br />
+			<input id="chipsNeeded" type="number" value="0" min="0" /><br />
 			<br />
 			<button id="calculateButton">Calculate</button>
 			<span id="cookiesNeeded"></span>
@@ -26,16 +26,23 @@
 			const currentPrestigeInput = document.querySelector("#prestige"),
 				chipsNeededInput = document.querySelector("#chipsNeeded"),
 				cookiesNeededOutput = document.querySelector("#cookiesNeeded"),
-				calculateButton = document.querySelector("#calculateButton")
+				calculateButton = document.querySelector("#calculateButton");
+			ascensionCalculator = {
+				calculate: function(currentPL, nextHC) {
+					return ((currentPL + nextHC) ** 3 - currentPL ** 3) * 1e12;
+				},
+				formatter: new Intl.NumberFormat(undefined, { notation:"compact" }),
+				display: function(value) {
+					cookiesNeededOutput.innerHTML = `You need <b> ${value} cookies </b> for the next ascension`
+				}
+			}
 			function calculateCookiesNeeded() {
 				const currentPL = parseFloat(currentPrestigeInput.value),
-					nextHC = parseFloat(chipsNeededInput.value),
-					cookiesNeeded = new Intl.NumberFormat(undefined, { notation:"compact" })
-						.format(((currentPL + nextHC) ** 3 - currentPL ** 3) * 1e12)
-				cookiesNeededOutput.innerHTML = `You need <b> ${cookiesNeeded} cookies </b> for the next ascension`
+					nextHC = parseFloat(chipsNeededInput.value);
+				ascensionCalculator.display(ascensionCalculator.formatter.format(ascensionCalculator.calculate(currentPL, nextHC)));
 			}
 
-			calculateButton.addEventListener("click", calculateCookiesNeeded)
+			calculateButton.addEventListener("click", calculateCookiesNeeded);
 		</script>
 	</body>
 </html>
