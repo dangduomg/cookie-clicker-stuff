@@ -26,21 +26,21 @@
 			const currentPrestigeInput = document.querySelector("#prestige"),
 				chipsNeededInput = document.querySelector("#chipsNeeded"),
 				cookiesNeededOutput = document.querySelector("#cookiesNeeded"),
-				calculateButton = document.querySelector("#calculateButton");
-			ascensionCalculator = {
-				calculate: function(currentPL, nextHC) {
-					return ((currentPL + nextHC) ** 3 - currentPL ** 3) * 1e12;
-				},
-				formatter: new Intl.NumberFormat(undefined, { notation:"compact" }),
-				display: function(value) {
-					cookiesNeededOutput.innerHTML = `You need <b> ${value} cookies </b> for the next ascension`
-				}
-			}
+				calculateButton = document.querySelector("#calculateButton"),
+				ascensionCalculator = {
+					calculate: function(currentPL, nextHC) {
+						return ((currentPL + nextHC) ** 3 - currentPL ** 3) * 1e12;
+					},
+					format: new Intl.NumberFormat(undefined, { notation:"compact" }).format,
+					display: function(value) {
+						cookiesNeededOutput.innerHTML = `You need <b> ${value} cookies </b> for the next ascension`
+					},
+				};
 			function calculateCookiesNeeded() {
-				const currentPL = parseFloat(currentPrestigeInput.value),
-					nextHC = parseFloat(chipsNeededInput.value);
-				ascensionCalculator.display(ascensionCalculator.formatter.format(ascensionCalculator.calculate(currentPL, nextHC)));
-			}
+				const currentPL = parseInt(currentPrestigeInput.value),
+					nextHC = parseInt(chipsNeededInput.value);
+				ascensionCalculator.display(ascensionCalculator.format(ascensionCalculator.calculate(currentPL, nextHC)));
+			};
 
 			calculateButton.addEventListener("click", calculateCookiesNeeded);
 		</script>
